@@ -1,0 +1,1 @@
+2024-06-20T22:44:16.1613893 - ID: 10, Name: first data test, Value: 29.11
