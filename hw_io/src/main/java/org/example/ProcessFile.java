@@ -53,19 +53,18 @@ public class ProcessFile implements FileManipulation {
     }
 
 
-    @Override
-    public String readFile(String name) {
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            FileReader fileReader = new FileReader(name);
-            int ch ;
-            while ((ch = fileReader.read()) != -1) {
-                stringBuilder.append((char) ch);
+   @Override
+    public String readFile(String path) {
+        File file = new File(path);
+        StringBuilder strBuilder = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                strBuilder.append(line);
             }
-            fileReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return stringBuilder.toString();
+        return strBuilder.toString();
     }
 }
